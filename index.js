@@ -43,5 +43,41 @@ const bookStore = {
     ]
 }
 
-// Write your code here!
+
+
+// update the existing header
+const bookStoreTitle = document.getElementById("header");
+bookStoreTitle.textContent = bookStore.name; // sets the header to Flatbooks Technical Books
+
+
+// selects the book list ul element
+const bookList = document.getElementById("book-list");
+// loop through all books in the bookStore object.
+bookStore.books.forEach((book) => {
+    
+    // Create new HTML elements
+    const bookContainer = document.createElement("li");
+    const bookTitle = document.createElement("h3");
+    const bookAuthor = document.createElement("p");
+    const bookImage = document.createElement("img");
+
+    // Set the content and attributes
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+
+    // Append book details to the li element
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+
+    // Append the li element to the book list
+    bookList.appendChild(bookContainer);
+
+});
+
+
+// deletes the example element with id "delete-this" from the DOM
+const deleteThis = document.getElementById("delete-this");
+deleteThis.remove();
+
 
